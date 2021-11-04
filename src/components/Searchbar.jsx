@@ -13,7 +13,7 @@ export default function Searchbar(props) {
                 alignItems: 'center',
             }}
             >
-                <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
+                <FormControl sx={{ m: 1, width: '100%' }} variant="outlined" >
                 <InputLabel htmlFor="outlined-adornment-city">Enter City...</InputLabel>
                 <OutlinedInput
                     id="outlined-adornment-city"
@@ -23,8 +23,7 @@ export default function Searchbar(props) {
                     </InputAdornment>
                     }
                     label="Enter City..."
-                    onChange={props.city}
-                    onKeyPress={props.weather}
+                    onKeyPress={props.getWeather}
                 />
                 </FormControl>
             </Box>
