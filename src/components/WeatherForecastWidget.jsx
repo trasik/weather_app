@@ -8,9 +8,6 @@ export default function WeatherForecastWidget(props) {
     const forecastDay = (d) => {
         let month = d.getMonth() + 1;
         let date = d.getDate();
-        console.log(
-            d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-          );
         return `${month}/${date}`;
     }
 
@@ -65,8 +62,7 @@ export default function WeatherForecastWidget(props) {
             </Grid>
         )
     });
-
-    console.log(props.forecast.list);
+    
     return (
         <Container  maxWidth="xl" sx={{marginTop: "50px"}}>
             <Typography sx={{ color: "#FFFFFF", fontSize: 18, fontWeight: "bold" }} gutterBottom>
