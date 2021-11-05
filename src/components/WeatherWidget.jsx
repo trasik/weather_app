@@ -1,4 +1,4 @@
-import { Container, Typography, Grid, Card, CardContent, Box} from "@mui/material";
+import { Container, Typography, Grid, Stack, Card, CardContent, Box} from "@mui/material";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faCloud, faCloudRain, faSnowflake} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
@@ -19,14 +19,14 @@ export default function WeatherWidget(props) {
     
     return(
         <Container maxWidth="xl" sx={{marginTop: "50px"}}>
-            <Typography sx={{ fontSize: 24, fontWeight: "bold" }} gutterBottom>
+            <Typography sx={{ color: "#FFFFFF", fontSize: 24, fontWeight: "bold" }} gutterBottom>
                 {props.city}, {props.country}
             </Typography>
-            <Typography sx={{ fontSize: 16, fontWeight: "500" }} gutterBottom>
+            <Typography sx={{ color: "#FFFFFF", fontSize: 16, fontWeight: "500" }} gutterBottom>
                 {datePicker(new Date())}
             </Typography>
             <Grid mt={1} container spacing={2}>
-                <Grid item xs={6}>
+                <Grid mt={3} item xs={6}>
                     <Box
                     sx={{
                         display: 'flex',
@@ -57,7 +57,7 @@ export default function WeatherWidget(props) {
                                     return <FontAwesomeIcon icon={faCloud} size="6x" />;
                                 }
                             })()}
-                            <Typography sx={{ marginTop:2, marginLeft: 1, fontSize: 60, fontWeight: "500", color:"#1f1f1f" }} gutterBottom>
+                            <Typography sx={{ marginTop:2, marginLeft: 1, fontSize: 60, fontWeight: "500", color:"#FFFFFF" }} gutterBottom>
                                 {Math.round(props.main.temp)}&#176;F
                             </Typography>
                         </Box>
@@ -65,13 +65,108 @@ export default function WeatherWidget(props) {
                 </Grid>
                 <Grid item xs={6}>
                     <Card sx={{ 
-                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.2)',
                         color: "#ffffff"
                     }}>
                         <CardContent>
-                            <Typography sx={{ fontSize: 14 }} gutterBottom>
-                            Word of the Day
-                            </Typography>
+                            <Grid container spacing={2}>
+                                <Grid item xs={4}>
+                                <Stack spacing={2}>
+                                    <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                    >
+                                        <Typography sx={{ fontSize: 18, fontWeight: "400" }}>
+                                            {Math.round(props.main.temp_max)}&#176;F
+                                        </Typography>
+                                        <Typography sx={{ fontSize: 18, fontWeight: "bold" }} gutterBottom>
+                                            High
+                                        </Typography>
+                                    </Box>
+                                    <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                    >
+                                        <Typography sx={{ fontSize: 18, fontWeight: "400" }}>
+                                        {Math.round(props.main.temp_min)}&#176;F
+                                    </Typography>
+                                        <Typography sx={{ fontSize: 18, fontWeight: "bold" }}>
+                                            Low
+                                        </Typography>
+                                    </Box>
+                                </Stack>
+                                </Grid>
+                                <Grid item xs={4}>
+                                <Stack spacing={2}>
+                                    <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                    >
+                                        <Typography sx={{ fontSize: 18, fontWeight: "400" }} >
+                                            {Math.round(props.main.humidity)}%
+                                        </Typography>
+                                        <Typography sx={{ fontSize: 18, fontWeight: "bold" }} gutterBottom>
+                                            Humidty
+                                        </Typography>
+                                    </Box>
+                                    <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                    >
+                                        <Typography sx={{ fontSize: 18, fontWeight: "400" }} >
+                                            {Math.round(props.wind.speed)}mph
+                                        </Typography>
+                                        <Typography sx={{ fontSize: 18, fontWeight: "bold" }} >
+                                            Wind
+                                        </Typography>
+                                    </Box>
+                                </Stack>
+                                </Grid>
+                                <Grid item xs={4}>
+                                <Stack spacing={2}>
+                                    <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                    >
+                                        <Typography sx={{ fontSize: 18, fontWeight: "400" }} >
+                                            {new Date(props.sys.sunrise * 1000).toLocaleTimeString("en-US")}
+                                        </Typography>
+                                        <Typography sx={{ fontSize: 18, fontWeight: "bold" }} gutterBottom>
+                                            Sunrise
+                                        </Typography>
+                                    </Box>
+                                    <Box
+                                    sx={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                    }}
+                                    >
+                                        <Typography sx={{ fontSize: 18, fontWeight: "400" }} >
+                                            {new Date(props.sys.sunset * 1000).toLocaleTimeString("en-US")}
+                                        </Typography>
+                                        <Typography sx={{ fontSize: 18, fontWeight: "bold" }} >
+                                            Sunset
+                                        </Typography>
+                                    </Box>
+                                </Stack>
+                                </Grid>
+                            </Grid>
                         </CardContent>
                     </Card>
                 </Grid>

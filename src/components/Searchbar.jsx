@@ -16,6 +16,7 @@ export default function Searchbar(props) {
                 <FormControl sx={{ m: 1, width: '100%' }} variant="outlined" >
                 <InputLabel htmlFor="outlined-adornment-city">Enter City...</InputLabel>
                 <OutlinedInput
+                    autoComplete={'off'}
                     id="outlined-adornment-city"
                     endAdornment={
                     <InputAdornment position="end">
